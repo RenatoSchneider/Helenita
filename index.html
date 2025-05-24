@@ -37,9 +37,10 @@
       <a-assets>
         <video
           id="video"
+          autoplay
+          loop
           playsinline
           crossorigin="anonymous"
-          preload="auto"
           src="video.mp4"
         ></video>
       </a-assets>
@@ -48,32 +49,14 @@
 
       <a-entity mindar-image-target="targetIndex: 0">
         <a-video
-          id="video-plane"
           src="#video"
           width="1"
           height="1.117"
           position="0 0 0"
           rotation="0 0 0"
+          scale="1.1 1.1 1"
         ></a-video>
       </a-entity>
     </a-scene>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const video = document.querySelector("#video");
-        const target = document.querySelector("a-entity[mindar-image-target]");
-
-        target.addEventListener("targetFound", () => {
-          video.pause(); // força reset mesmo se travou
-          video.currentTime = 0;
-          video.play();
-        });
-
-        target.addEventListener("targetLost", () => {
-          video.pause();
-          video.currentTime = 0;
-        });
-      });
-    </script>
   </body>
 </html>
